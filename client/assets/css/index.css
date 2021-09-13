@@ -1,0 +1,14 @@
+body{
+    background-color: black;
+}
+h1{
+    color: white;
+    font-family: monospace;
+    font-weight: 200%;
+    text-align: center;
+    margin: 3.5rem;
+}
+#phaser-example{
+    text-align: center;
+    margin-top: 50px;
+}

@@ -2,11 +2,22 @@ var cursors;
 var knight;
 var crates;
 var coinTimer;
+var hitBlaster;
+var fallingKnight;
+
 var score = 0;
+var scoreText;
+
+var secondsLeft = 60;
+var timeLeftText;
+var timeLeftTimer;
+
+var gameOver = false;
 
 var configure = {
     height: 600,
     width: 1000,
+    parent: 'phaser-example',
     type: Phaser.AUTO,
     scene: {
         preload: gamePreload,
@@ -22,12 +33,19 @@ var configure = {
            debug: false
        }
     }
+
 }
 
 function gamePreload(){
 this.load.image("knight","assets/img/knight.png");
 this.load.image('crate','assets/img/crate.png');
 this.load.image('background','assets/img/background.png');
+
+// loading sound on collision
+this.load.audio('blaster','assets/sounds/p-ping.mp3');
+
+//loading sound for fall
+this.load.audio('falling','assets/sounds/falling.mp3');
 
 //loading coin
 this.load.image('coin','assets/img/bitcoin.png');
@@ -66,7 +84,12 @@ function gameCreate(){
     knight.body.setSize(200,600,20,0)
     knight.scaleX = 0.15;
     knight.scaleY = knight.scaleX;
-    
+    // knight.sfx = {};
+    // knight.sfx.collide = game.add.audio('blaster');
+    hitBlaster = this.sound.add('blaster');
+    fallingKnight = this.sound.add('falling');
+
+    //blaster = this.add.audio('blaster');
     //create run animation
     this.anims.create({
         key: 'knight_run',
@@ -106,9 +129,9 @@ function gameCreate(){
     });
 
 
-
-
-
+    //setting value for score text
+    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+    timeLeftText = this.add.text(16, 46, 'Seconds: 60', { fontSize: '32px', fill: '#000' });
     //create crate left floor
     crates = this.physics.add.staticGroup();
     crates.create(40,562,'crate');
@@ -148,6 +171,15 @@ function gameCreate(){
         repeat: -1
     });
 
+    timeLeftTimer = this.time.addEvent({
+        delay: 1000,
+        callback: updateTimeLeft,
+        callbackScope: this,
+        repeat: -1
+    });
+
+    
+   
 }
 
 function generateCoins(){
@@ -168,14 +200,33 @@ function generateCoins(){
     });
     this.physics.add.collider(crates,coins);
     this.physics.add.overlap(knight, coins, collectCoin, null, this);
+   
+}
+
+function updateTimeLeft(){
+    if(gameOver) return;
+    secondsLeft --;
+    timeLeftText.setText('Seconds: ' + secondsLeft);
+    if(secondsLeft <= 0){
+        this.physics.pause();
+        gameOver = true;
+    }
+    if(knight.y > 562){  
+        fallingKnight.play();
+        this.physics.pause();
+        gameOver = true;
+    }
+
 }
 
 function collectCoin (knight, coin)
 {
     coin.disableBody(true, true);
+    hitBlaster.play();
     score ++;
-    console.log(score);
+    scoreText.setText('Score: ' + score);
 }
+
 
 function gameUpdate(){
     if(cursors.left.isDown){
@@ -195,6 +246,8 @@ function gameUpdate(){
     if (cursors.up.isDown && knight.body.touching.down){
         knight.setVelocityY(-600);
     }
+    
+
 }
 
-var game = new Phaser.Game(configure)
+var game = new Phaser.Game(configure);
