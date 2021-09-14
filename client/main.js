@@ -4,11 +4,12 @@ var crates;
 var coinTimer;
 var hitBlaster;
 var fallingKnight;
+var gameSound;
 
 var score = 0;
 var scoreText;
 
-var secondsLeft = 60;
+var secondsLeft = 30;
 var timeLeftText;
 var timeLeftTimer;
 
@@ -39,13 +40,16 @@ var configure = {
 function gamePreload(){
 this.load.image("knight","assets/img/knight.png");
 this.load.image('crate','assets/img/crate.png');
-this.load.image('background','assets/img/background.png');
+this.load.image('background','assets/img/pexels.jpg');
 
 // loading sound on collision
 this.load.audio('blaster','assets/sounds/p-ping.mp3');
 
 //loading sound for fall
 this.load.audio('falling','assets/sounds/falling.mp3');
+
+//loading sound for background
+this.load.audio('backgroundSound','assets/sounds/splash.mp3');
 
 //loading coin
 this.load.image('coin','assets/img/bitcoin.png');
@@ -76,6 +80,7 @@ this.load.image('idle_frame_10','assets/img/knight/idle/Idle (10).png');
 }
 
 function gameCreate(){
+   
     //create background
     this.add.image(500,375,'background');
 
@@ -88,8 +93,9 @@ function gameCreate(){
     // knight.sfx.collide = game.add.audio('blaster');
     hitBlaster = this.sound.add('blaster');
     fallingKnight = this.sound.add('falling');
-
-    //blaster = this.add.audio('blaster');
+    gameSound = this.sound.add('backgroundSound');
+    gameSound.play();
+    
     //create run animation
     this.anims.create({
         key: 'knight_run',
@@ -130,8 +136,9 @@ function gameCreate(){
 
 
     //setting value for score text
-    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
-    timeLeftText = this.add.text(16, 46, 'Seconds: 60', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '27px', fill: '#fff' });
+    timeLeftText = this.add.text(500, 16, '00:30', { fontSize: '27px', fill: '#fff' });
+
     //create crate left floor
     crates = this.physics.add.staticGroup();
     crates.create(40,562,'crate');
@@ -177,8 +184,6 @@ function gameCreate(){
         callbackScope: this,
         repeat: -1
     });
-
-    
    
 }
 
@@ -206,14 +211,22 @@ function generateCoins(){
 function updateTimeLeft(){
     if(gameOver) return;
     secondsLeft --;
-    timeLeftText.setText('Seconds: ' + secondsLeft);
+    if(secondsLeft < 10){
+        timeLeftText.setText('00:0' + secondsLeft);
+    }
+    else{
+        timeLeftText.setText('00:' + secondsLeft);
+    }
+    
     if(secondsLeft <= 0){
         this.physics.pause();
+        gameSound.stop();
         gameOver = true;
     }
     if(knight.y > 562){  
         fallingKnight.play();
         this.physics.pause();
+        gameSound.stop();
         gameOver = true;
     }
 

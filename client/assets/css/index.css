@@ -1,14 +1,42 @@
 body{
+    color: white;
     background-color: black;
 }
-h1{
-    color: white;
+p{
     font-family: monospace;
-    font-weight: 200%;
     text-align: center;
-    margin: 3.5rem;
+    margin: 1.5rem;
+    font-size: xx-large;
 }
 #phaser-example{
     text-align: center;
-    margin-top: 50px;
 }
+.btnBox{
+    float: right;
+}
+span{
+    font-family: monospace;
+    font-weight: 100%;
+}
+.infoDiv{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+button{
+    margin: 0.5rem;
+}
+canvas{
+    border-radius: 50px;
+}
+.myBtnStyle{
+    background-color: #212121;
+    border-color: #212121;
+    color: white;
+    font-family: monospace;
+    border-radius: 10px;
+  }
+  .modal-content{
+    background-color: #212121;
+    border-radius: 20px;
+    font-family: monospace;
+  }
