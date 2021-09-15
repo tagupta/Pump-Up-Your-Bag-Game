@@ -141,8 +141,8 @@ function gameCreate(){
 
 
     //setting value for score text
-    scoreText = this.add.text(16, 0, 'Score: 0', { fontSize: '27px', fill: '#fff' });
-    timeLeftText = this.add.text(500, 0, '00:30', { fontSize: '27px', fill: '#fff' });
+    scoreText = this.add.text(16, 2, 'Score: 0', { fontSize: '27px', fill: '#fff' });
+    timeLeftText = this.add.text(500, 2, '00:30', { fontSize: '27px', fill: '#fff' });
 
     //create crate left floor
     crates = this.physics.add.staticGroup();

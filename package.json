@@ -1,11 +1,22 @@
 {
   "name": "ethereum-game",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tagupta/Pump-Up-Your-Bag-Game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tagupta/Pump-Up-Your-Bag-Game/issues"
+  },
+  "homepage": "https://github.com/tagupta/Pump-Up-Your-Bag-Game#readme",
+  "description": "",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2"
+  }
 }
