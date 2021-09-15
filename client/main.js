@@ -5,6 +5,7 @@ var coinTimer;
 var hitBlaster;
 var fallingKnight;
 var gameSound;
+var mushroomTimer1;
 
 var score = 0;
 var scoreText;
@@ -53,6 +54,10 @@ this.load.audio('backgroundSound','assets/sounds/splash.mp3');
 
 //loading coin
 this.load.image('coin','assets/img/bitcoin.png');
+
+//loading mushrooms
+this.load.image('mushroom1','assets/img/mushroom1.png');
+this.load.image('mushroom2','assets/img/mushroom2.png');
 
 //loading the run animation frame
 this.load.image('run_frame_1','assets/img/knight/run/Run (1).png');
@@ -177,6 +182,13 @@ function gameCreate(){
         callbackScope: this,
         repeat: -1
     });
+    
+    mushroomTimer1 = this.time.addEvent({
+        delay: Phaser.Math.Between(1000,5000),
+        callback: generateMushroom1,
+        callbackScope: this,
+        repeat: -1
+    });
 
     timeLeftTimer = this.time.addEvent({
         delay: 1000,
@@ -206,6 +218,26 @@ function generateCoins(){
     this.physics.add.collider(crates,coins);
     this.physics.add.overlap(knight, coins, collectCoin, null, this);
    
+}
+
+function generateMushroom1(){
+    var mushrooms = this.physics.add.group({
+        key: "mushroom1",
+        repeat: 0,
+        setXY: {
+            x: Phaser.Math.Between(0,960),
+            y: -100,
+            stepX: Phaser.Math.Between(30,100)
+        }
+     });
+
+     mushrooms.children.iterate(function (child) {
+
+        child.setBounceY(Phaser.Math.FloatBetween(0.4, 1.8));
+    
+    });
+    this.physics.add.collider(crates,mushrooms);
+    this.physics.add.overlap(knight, mushrooms, collectMushroom, null, this);
 }
 
 function updateTimeLeft(){
@@ -240,6 +272,12 @@ function collectCoin (knight, coin)
     scoreText.setText('Score: ' + score);
 }
 
+function collectMushroom(knight,mush){
+    mush.disableBody(true, true);
+    hitBlaster.play();
+    score = score + 10;
+    scoreText.setText('Score: ' + score);
+}
 
 function gameUpdate(){
     if(cursors.left.isDown){

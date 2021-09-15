@@ -40,3 +40,6 @@ canvas{
     border-radius: 20px;
     font-family: monospace;
   }
+  .myBtnStyle:hover{
+    background-color: burlywood;
+  }
