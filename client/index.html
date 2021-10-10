@@ -6,6 +6,8 @@
     <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
     <script src="assets/bootstrap/js/popper.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./abi.js"></script>
+    <script src="assets/js/web3.min.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
 
@@ -13,11 +15,21 @@
 <body>
     <p>Pump Up Your Bag</p>
     <div class="container">
-        <div class="row justify-content-around infoDiv">
+        <div class="row justify-content-between infoDiv">
             <div class="col-lg-10" style="display: contents;"> 
                 <div class="btnBox">
                    <button class="btn myBtnStyle" data-toggle="modal" data-target="#exampleModal">Rules</button>
                    <button class="btn myBtnStyle" onclick="window.location.href='index.html'">Reload</button>
+                </div>
+                <div class="btnBox btn-group">
+                    <button type="button" class="btn myBtnStyle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Buy Accessories
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="btn myBtnStyle dropdown-item" onclick="buy(1)">Pump Talisman - 0.0001 ETH</button>
+                        <button class="btn myBtnStyle dropdown-item" onclick="buy(2)">Super Boots - 0.0002 ETH</button>
+                        <button class="btn myBtnStyle dropdown-item" onclick="buy(3)">Time Warp Cape - 0.0003 ETH</button> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,6 +63,19 @@
         </div>
         </div>
     </div>
+    <script type="text/javascript">
+      
+      $(document).ready(()=>{
+
+        setTimeout(() =>{
+          getUserItems();
+        },2000);
+
+      });
+    
+    </script>
 </body>
+ <script src="./game.js"></script>
  <script src="./main.js"></script>
 </html>
+

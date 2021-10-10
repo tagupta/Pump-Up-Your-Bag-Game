@@ -17,6 +17,7 @@
   "homepage": "https://github.com/tagupta/Pump-Up-Your-Bag-Game#readme",
   "description": "",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.3.2"
+    "@openzeppelin/contracts": "^4.3.2",
+    "@truffle/hdwallet-provider": "^1.5.0"
   }
 }
