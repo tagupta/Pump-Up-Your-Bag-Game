@@ -17,11 +17,11 @@ var timeLeftTimer;
 var gameOver = false;
 
 //PUMP Talisman
-var COIN_GENERATION_RATE;
+var COIN_GENERATION_INTERVAL = 3000;
 //Super Boots
-var PLAYER_SPEED;
+var PLAYER_SPEED = 300;
 //Time Warp Cape
-var GAME_SECOND;
+var GAME_SECOND = 1000;
 
 var configure = {
     height: 600,
@@ -44,8 +44,13 @@ var configure = {
     }
 
 }
+var game;
+getUserItems(() =>{
+    game = new Phaser.Game(configure)
+});
 
 function gamePreload(){
+console.log('Preloading this game');
 this.load.image("knight","assets/img/knight.png");
 this.load.image('crate','assets/img/crate.png');
 this.load.image('background','assets/img/pexels.jpg');
@@ -95,14 +100,11 @@ function gameCreate(){
    
     //create background
     this.add.image(500,375,'background');
-
     //create knight
     knight = this.physics.add.sprite(200,100,'knight');
     knight.body.setSize(200,600,20,0)
     knight.scaleX = 0.15;
     knight.scaleY = knight.scaleX;
-    // knight.sfx = {};
-    // knight.sfx.collide = game.add.audio('blaster');
     hitBlaster = this.sound.add('blaster');
     fallingKnight = this.sound.add('falling');
     gameSound = this.sound.add('backgroundSound');
@@ -158,23 +160,16 @@ function gameCreate(){
     crates.create(194,562,'crate');
     crates.create(271,562,'crate');
     crates.create(348,562,'crate');
-    
-
     //platform 1
     crates.create(450,385,'crate');
-    
     //platform 2
     crates.create(700,385,'crate');
-
     //platform 3
     crates.create(570,220,'crate');
-    
     //platform 4
     crates.create(830,220,'crate');
-    
     //platform 5
     crates.create(960,385,'crate');
-   
     //right floor
     crates.create(960,562,'crate');
     crates.create(883,562,'crate');
@@ -184,7 +179,7 @@ function gameCreate(){
     cursors = this.input.keyboard.createCursorKeys();
     
     coinTimer = this.time.addEvent({
-        delay: Phaser.Math.Between(1000,3000),
+        delay: COIN_GENERATION_INTERVAL,
         callback: generateCoins,
         callbackScope: this,
         repeat: -1
@@ -198,7 +193,7 @@ function gameCreate(){
     });
 
     timeLeftTimer = this.time.addEvent({
-        delay: 1000,
+        delay: GAME_SECOND,
         callback: updateTimeLeft,
         callbackScope: this,
         repeat: -1
@@ -292,12 +287,12 @@ function collectMushroom(knight,mush){
 
 function gameUpdate(){
     if(cursors.left.isDown){
-        knight.setVelocityX(-200);
+        knight.setVelocityX(-PLAYER_SPEED);
         knight.anims.play('knight_run', true);
         knight.flipX = true;
     }
     else if(cursors.right.isDown){
-        knight.setVelocityX(200);
+        knight.setVelocityX(PLAYER_SPEED);
         knight.anims.play('knight_run', true);
         knight.flipX = false;
     }
@@ -312,4 +307,5 @@ function gameUpdate(){
 
 }
 
-var game = new Phaser.Game(configure);
+
+
