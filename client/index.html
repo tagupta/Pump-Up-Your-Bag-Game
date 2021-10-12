@@ -14,6 +14,19 @@
 </head>
 <body>
     <p>Pump Up Your Bag</p>
+      <!-- Toast -->
+    <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 13px;">
+        <div class="toast" data-delay='4000' style="position: absolute; top: 0; right: 0;">
+        <div class="toast-body myBtnStyle d-flex justify-content-between">
+            <div id="toastMessage"></div>
+            <div>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row justify-content-between infoDiv">
             <div class="col-lg-10" style="display: contents;"> 
@@ -63,6 +76,8 @@
         </div>
         </div>
     </div>
+
+ 
 </body>
  <script src="./main.js"></script>
  <script src="./game.js"></script>

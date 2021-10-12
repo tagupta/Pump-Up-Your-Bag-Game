@@ -78,7 +78,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -121,7 +122,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -134,7 +136,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -195,7 +198,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -208,7 +212,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -221,7 +226,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -6923,19 +6929,19 @@
     "absolutePath": "/D/BlockChain/Ethereum-201/Ethereum Game/contracts/GameToken.sol",
     "exportedSymbols": {
       "Context": [
-        2599
+        2647
       ],
       "ERC20": [
-        2177
+        2225
       ],
       "GameToken": [
         30
       ],
       "IERC20": [
-        2255
+        2303
       ],
       "IERC20Metadata": [
-        2280
+        2328
       ]
     },
     "id": 31,
@@ -6962,7 +6968,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 31,
-        "sourceUnit": 2178,
+        "sourceUnit": 2226,
         "src": "67:55:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6975,7 +6981,7 @@
               "id": 3,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2177,
+              "referencedDeclaration": 2225,
               "src": "148:5:0"
             },
             "id": 4,
@@ -6984,20 +6990,20 @@
           }
         ],
         "contractDependencies": [
-          2177,
-          2255,
-          2280,
-          2599
+          2225,
+          2303,
+          2328,
+          2647
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 30,
         "linearizedBaseContracts": [
           30,
-          2177,
-          2280,
-          2255,
-          2599
+          2225,
+          2328,
+          2303,
+          2647
         ],
         "name": "GameToken",
         "nodeType": "ContractDefinition",
@@ -7053,7 +7059,7 @@
                   "id": 6,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2177,
+                  "referencedDeclaration": 2225,
                   "src": "173:5:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -7129,7 +7135,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2037,
+                      "referencedDeclaration": 2085,
                       "src": "283:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -7296,19 +7302,19 @@
     "absolutePath": "/D/BlockChain/Ethereum-201/Ethereum Game/contracts/GameToken.sol",
     "exportedSymbols": {
       "Context": [
-        2599
+        2647
       ],
       "ERC20": [
-        2177
+        2225
       ],
       "GameToken": [
         30
       ],
       "IERC20": [
-        2255
+        2303
       ],
       "IERC20Metadata": [
-        2280
+        2328
       ]
     },
     "id": 31,
@@ -7335,7 +7341,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 31,
-        "sourceUnit": 2178,
+        "sourceUnit": 2226,
         "src": "67:55:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7348,7 +7354,7 @@
               "id": 3,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2177,
+              "referencedDeclaration": 2225,
               "src": "148:5:0"
             },
             "id": 4,
@@ -7357,20 +7363,20 @@
           }
         ],
         "contractDependencies": [
-          2177,
-          2255,
-          2280,
-          2599
+          2225,
+          2303,
+          2328,
+          2647
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 30,
         "linearizedBaseContracts": [
           30,
-          2177,
-          2280,
-          2255,
-          2599
+          2225,
+          2328,
+          2303,
+          2647
         ],
         "name": "GameToken",
         "nodeType": "ContractDefinition",
@@ -7426,7 +7432,7 @@
                   "id": 6,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2177,
+                  "referencedDeclaration": 2225,
                   "src": "173:5:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -7502,7 +7508,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2037,
+                      "referencedDeclaration": 2085,
                       "src": "283:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -7669,9 +7675,17 @@
     "name": "solc",
     "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xaa26b6519A1ffd4A9FAF9737E07b27969c7D7d6a",
+      "transactionHash": "0x50ffa2db9fc1d918d93359974b2b607a7e1127d3940623617307bdc7ee93b9a1"
+    }
+  },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-10-01T13:30:49.208Z",
+  "updatedAt": "2021-10-12T07:05:53.056Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

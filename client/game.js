@@ -6,7 +6,7 @@ var hitBlaster;
 var fallingKnight;
 var gameSound;
 var mushroomTimer1;
-
+var coinSent = false;
 var score = 0;
 var scoreText;
 
@@ -244,6 +244,10 @@ function generateMushroom1(){
 
 function updateTimeLeft(){
     if(gameOver){
+        if(!coinSent){
+           mintAfterGame(score);
+           coinSent = true;
+        }
         return;
     }
 

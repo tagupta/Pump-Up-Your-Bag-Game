@@ -15,6 +15,8 @@ contract MarketPlace{
      price[3] = 300000000000000;
 
     }
+    event TokenBought(uint tokenId);
+
     receive() payable external{}
 
     fallback() payable external{
@@ -26,6 +28,8 @@ contract MarketPlace{
         uint weiAmount = msg.value;
         require(weiAmount >= price[tokenID],'MarketPlace: Insufficient funds');
         _token.safeTransferFrom(address(this), msg.sender, tokenID, 1, "");
+
+        emit TokenBought(tokenID);
     }
 
     function onERC1155Received(address operator, address from, uint256 id, uint256 value, bytes calldata data) pure external returns (bytes4){

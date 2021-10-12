@@ -58,3 +58,8 @@ canvas{
   div.dropdown-menu.show{
     left : auto;
   }
+
+  .toast{
+    min-width: 366px;
+    background-color: black;
+  }
