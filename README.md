@@ -24,8 +24,11 @@ This dApp is built using:
 1. Make sure you have [Metamask](https://metamask.io/) installed to interact with web 3.0 content in the browser.
 2. In MetaMask, switch the blockchain network from ```Ethereum Mainnet``` to ```Ropsten Test Network```.
 3. Get some testnet ETH from an Ethereum Ropsten faucet like [this one](https://faucet.dimensions.network/).
-4. Access the dApp in the browser [here](https://tagupta.github.io/Pump-Up-Your-Bag-Game/client/). ***Also, Zoom In your window for better experience.***
-5. Now you're ready to use the dApp running on the Ethereum **Ropsten testnet**!
+4. Access the dApp in the browser [here](https://tagupta.github.io/Pump-Up-Your-Bag-Game/client/). 
+ 
+    ***Also, Zoom In your window for better experience.***
+ 
+6. Now you're ready to use the dApp running on the Ethereum **Ropsten testnet**!
 
 ## Usage
 Preview
