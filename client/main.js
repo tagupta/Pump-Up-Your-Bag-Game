@@ -3,9 +3,9 @@ var marketInstance;
 var tokenInstance;
 var gameTokenInstance;
 var user;
-var gameTokenAddress = '0xaa26b6519A1ffd4A9FAF9737E07b27969c7D7d6a';
-var tokenAddress = '0x3947F43308DA07Fd54737f4CAC5393d71128d093'; //ERC1155
-var marketPlaceAddress = '0x28C5d88D3826099952a7977913D7FB3109c618B2';
+var gameTokenAddress = '0x7dfc936aA9d9c4b589dD45862aafD50450b39D4a';
+var tokenAddress = '0x0662E718f55876E33c934229C94ec7BAfA8e34e4'; //ERC1155
+var marketPlaceAddress = '0xcb090fAB26B30D3A7cDed2A2C50117c5842d48c9';
 
 $(document).ready(()=>{ 
     window.ethereum.enable().then(accounts => {
